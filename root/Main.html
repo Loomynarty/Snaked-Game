@@ -117,25 +117,6 @@
                 * 
                 * The Math.wrap call allow the snake to wrap around the screen, so when
                 * it goes off any of the sides it re-appears on the other.
-                
-                switch (this.heading)
-                {
-                    case LEFT:
-                        this.headPosition.x = Phaser.Math.Wrap(this.headPosition.x - 1, 0, 40);
-                        break;
-
-                    case RIGHT:
-                        this.headPosition.x = Phaser.Math.Wrap(this.headPosition.x + 1, 0, 40);
-                        break;
-
-                    case UP:
-                        this.headPosition.y = Phaser.Math.Wrap(this.headPosition.y - 1, 0, 30);
-                        break;
-
-                    case DOWN:
-                        this.headPosition.y = Phaser.Math.Wrap(this.headPosition.y + 1, 0, 30);
-                        break;
-                }
                 */
                 switch (this.heading)
                 {
