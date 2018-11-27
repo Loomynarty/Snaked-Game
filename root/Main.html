@@ -141,18 +141,22 @@
                 {
                     case LEFT:
                         this.headPosition.x -= 1
+                        if(this.headPosition.x < 0) this.alive = false
                         break;
 
                     case RIGHT:
                         this.headPosition.x += 1
+                        if(this.headPosition.x > 38) this.alive = false
                         break;
 
                     case UP:
                         this.headPosition.y -= 1
+                        if(this.headPosition.y < 0) this.alive = false
                         break;
 
                     case DOWN:
                         this.headPosition.y += 1
+                        if(this.headPosition.y > 28) this.alive = false
                         break;
                 }
 
