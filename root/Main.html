@@ -43,6 +43,10 @@ function preload ()
 {
     this.load.image('food', 'assets/food.png');
     this.load.image('body', 'assets/snake.png');
+    this.load.image('head', 'assets/head.png');
+    this.load.image('headS', 'assets/headS.png');
+    this.load.image('headN', 'assets/headN.png');
+    this.load.image('headW', 'assets/headW.png');
 }
 
 function create ()
@@ -83,7 +87,7 @@ function create ()
 
             this.body = scene.add.group();
 
-            this.head = this.body.create(x * 16, y * 16, 'body');
+            this.head = this.body.create(x * 16, y * 16, 'head');
             this.head.setOrigin(0);
 
             this.alive = true;
@@ -110,7 +114,10 @@ function create ()
         {
             if (this.direction === UP || this.direction === DOWN)
             {
+                
                 this.heading = LEFT;
+                
+                this.head.setTexture('headW');
             }
         },
 
@@ -118,7 +125,11 @@ function create ()
         {
             if (this.direction === UP || this.direction === DOWN)
             {
+                
                 this.heading = RIGHT;
+               
+                this.head.setTexture('head');
+                
             }
         },
 
@@ -126,7 +137,9 @@ function create ()
         {
             if (this.direction === LEFT || this.direction === RIGHT)
             {
+                
                 this.heading = UP;
+                this.head.setTexture('headN');
             }
         },
 
@@ -134,7 +147,9 @@ function create ()
         {
             if (this.direction === LEFT || this.direction === RIGHT)
             {
+                
                 this.heading = DOWN;
+                this.head.setTexture('headS');
             }
         },
 
