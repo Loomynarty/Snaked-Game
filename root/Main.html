@@ -18,7 +18,7 @@ var config = {
     type: Phaser.WEBGL,
     width: 640,
     height: 480,
-    backgroundColor: '#bfcc00',
+    backgroundColor: 'A8DFE6',
     parent: 'phaser-example',
     scene: {
         preload: preload,
@@ -41,8 +41,8 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('food', 'assets/games/snake/food.png');
-    this.load.image('body', 'assets/games/snake/body.png');
+    this.load.image('food', 'assets/food.png');
+    this.load.image('body', 'assets/snake.png');
 }
 
 function create ()
@@ -147,7 +147,7 @@ function create ()
             * The Math.wrap call allow the snake to wrap around the screen, so when
             * it goes off any of the sides it re-appears on the other.
             */
-            switch (this.heading)
+            /*switch (this.heading)
             {
                 case LEFT:
                     this.headPosition.x = Phaser.Math.Wrap(this.headPosition.x - 1, 0, 40);
@@ -164,7 +164,29 @@ function create ()
                 case DOWN:
                     this.headPosition.y = Phaser.Math.Wrap(this.headPosition.y + 1, 0, 30);
                     break;
-            }
+            }*/
+            switch (this.heading)
+                {
+                    case LEFT:
+                        if(this.headPosition.x <= 0) this.alive = false
+                        else this.headPosition.x -= 1
+                        break;
+
+                    case RIGHT:
+                        if(this.headPosition.x >= 39) this.alive = false
+                        else this.headPosition.x += 1
+                        break;
+
+                    case UP:
+                        if(this.headPosition.y <= 0) this.alive = false
+                        else this.headPosition.y -= 1
+                        break;
+
+                    case DOWN:
+                        if(this.headPosition.y >= 29) this.alive = false
+                        else this.headPosition.y += 1
+                        break;
+                }
 
             this.direction = this.heading;
 
