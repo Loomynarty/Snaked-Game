@@ -30,13 +30,13 @@ var config = {
 var snake;
 var food;
 var cursors;
+var gameOverText;
 
 //  Direction consts
 var UP = 0;
 var DOWN = 1;
 var LEFT = 2;
 var RIGHT = 3;
-
 var game = new Phaser.Game(config);
 
 function preload ()
@@ -47,6 +47,8 @@ function preload ()
 
 function create ()
 {
+    scoreText = this.add.text(200,200, 'temp').setFontSize(64)
+    scoreText.visible = true
     var Food = new Phaser.Class({
 
         Extends: Phaser.GameObjects.Image,
@@ -191,7 +193,9 @@ function create ()
             this.direction = this.heading;
 
             //  Update the body segments and place the last coordinate into this.tail
-            Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1, this.tail);
+            if(snake.alive){
+                Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1, this.tail);
+            }
 
             //  Check to see if any of the body pieces have the same x/y as the head
             //  If they do, the head ran into the body
@@ -273,7 +277,7 @@ function update (time, delta)
 {
     if (!snake.alive)
     {
-        return;
+        gameOver()
     }
 
     /**
@@ -378,6 +382,11 @@ function repositionFood ()
     }
 }
 
+function gameOver(){
+    scoreText.setText('Score:'+ food.total)
+    scoreText.visible = true
+    //return
+}
 
 </script>
 
