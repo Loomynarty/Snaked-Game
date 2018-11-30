@@ -1,5 +1,5 @@
-[Fri Nov 30 12:52:21.351088 2018] [mpm_winnt:notice] [pid 2784:tid 404] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Fri Nov 30 12:52:21.352088 2018] [mpm_winnt:notice] [pid 2784:tid 404] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Fri Nov 30 12:52:21.352088 2018] [core:notice] [pid 2784:tid 404] AH00094: Command line: 'C:\\Users\\s632020\\Documents\\GitHub\\Snaked-Game/apache2/bin/httpd_usbwv8.exe -d C:/Users/s632020/Documents/GitHub/Snaked-Game/apache2'
-[Fri Nov 30 12:52:21.358088 2018] [mpm_winnt:notice] [pid 2784:tid 404] AH00418: Parent: Created child process 5484
-[Fri Nov 30 12:52:21.750888 2018] [mpm_winnt:notice] [pid 5484:tid 416] AH00354: Child: Starting 64 worker threads.
+[Fri Nov 30 13:51:21.209093 2018] [mpm_winnt:notice] [pid 6176:tid 404] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Fri Nov 30 13:51:21.209093 2018] [mpm_winnt:notice] [pid 6176:tid 404] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Fri Nov 30 13:51:21.209093 2018] [core:notice] [pid 6176:tid 404] AH00094: Command line: 'C:\\Users\\s632020\\Documents\\GitHub\\Snaked-Game/apache2/bin/httpd_usbwv8.exe -d C:/Users/s632020/Documents/GitHub/Snaked-Game/apache2'
+[Fri Nov 30 13:51:21.209093 2018] [mpm_winnt:notice] [pid 6176:tid 404] AH00418: Parent: Created child process 3100
+[Fri Nov 30 13:51:21.536693 2018] [mpm_winnt:notice] [pid 3100:tid 416] AH00354: Child: Starting 64 worker threads.
