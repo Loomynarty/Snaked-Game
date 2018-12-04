@@ -29,6 +29,8 @@ var config = {
 
 var snake;
 var food;
+var blueportal;
+var orangeportal;
 var cursors;
 var gameOverText;
 
@@ -47,6 +49,8 @@ function preload ()
     this.load.image('headS', 'assets/headS.png');
     this.load.image('headN', 'assets/headN.png');
     this.load.image('headW', 'assets/headW.png');
+    this.load.image('blueportal', 'assets/blueportal.png');
+    this.load.image('orangeportal', 'assets/orangeportal.png')
 }
 
 function create ()
@@ -76,6 +80,44 @@ function create ()
         {
             this.total++;
         }
+
+    });
+
+    var Blueportal = new Phaser.Class({
+
+        Extends: Phaser.GameObjects.Image,
+
+        initialize:
+
+        function Blueportal (scene, x, y)
+        {
+            Phaser.GameObjects.Image.call(this, scene)
+
+            this.setTexture('blueportal');
+            this.setPosition(x * 16, y * 16);
+            this.setOrigin(0);
+
+            scene.children.add(this);
+        },
+
+    });
+
+    var Orangeportal = new Phaser.Class({
+
+        Extends: Phaser.GameObjects.Image,
+
+        initialize:
+
+        function Orangeportal (scene, x, y)
+        {
+            Phaser.GameObjects.Image.call(this, scene)
+
+            this.setTexture('orangeportal');
+            this.setPosition(x * 16, y * 16);
+            this.setOrigin(0);
+
+            scene.children.add(this);
+        },
 
     });
 
@@ -116,9 +158,9 @@ function create ()
         {
             if (this.direction === UP || this.direction === DOWN)
             {
-                
+
                 this.heading = LEFT;
-                
+
                 this.head.setTexture('headW');
             }
         },
@@ -127,11 +169,11 @@ function create ()
         {
             if (this.direction === UP || this.direction === DOWN)
             {
-                
+
                 this.heading = RIGHT;
-               
+
                 this.head.setTexture('head');
-                
+
             }
         },
 
@@ -139,7 +181,7 @@ function create ()
         {
             if (this.direction === LEFT || this.direction === RIGHT)
             {
-                
+
                 this.heading = UP;
                 this.head.setTexture('headN');
             }
@@ -149,7 +191,7 @@ function create ()
         {
             if (this.direction === LEFT || this.direction === RIGHT)
             {
-                
+
                 this.heading = DOWN;
                 this.head.setTexture('headS');
             }
@@ -204,6 +246,43 @@ function create ()
                         else this.headPosition.y += 1
                         break;
                 }
+
+                switch (this.heading)
+                    {
+                        case LEFT:
+                        console.log(this.headPosition.x)
+                        console.log('Portal:' + blueportal.x)
+                            if(this.headPosition.x == Blueportal.x && this.headPosition.y == Blueportal.y)
+                            {
+                              this.headPosition.x = 32
+                              this.headPosition.y = 10
+                            }
+                            break;
+
+                        case RIGHT:
+                        if(this.headPosition.x == 16 && this.headPosition.y == 16)
+                            {
+                              this.headPosition.x = 32
+                              this.headPosition.y = 10
+                            }
+                            break;
+
+                        case UP:
+                            if(this.headPosition.x == 16 && this.headPosition.y == 16)
+                            {
+                              this.headPosition.x = 32
+                              this.headPosition.y = 10
+                            }
+                            break;
+
+                        case DOWN:
+                            if(this.headPosition.x == 16 && this.headPosition.y == 16)
+                            {
+                              this.headPosition.x = 32
+                              this.headPosition.y = 10
+                            }
+                            break;
+                    }
 
             this.direction = this.heading;
 
@@ -263,6 +342,18 @@ function create ()
             }
         },
 
+        collideWithBlueportal: function (blueportal)
+        {
+            if (this.head.x === blueportal.x && this.head.y === blueportal.y)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        },
+
         updateGrid: function (grid)
         {
             //  Remove all body pieces from valid positions list
@@ -283,6 +374,10 @@ function create ()
     food = new Food(this, 3, 4);
 
     snake = new Snake(this, 8, 8);
+
+    blueportal = new Blueportal(this, 4, 3);
+
+    orangeportal = new Orangeportal(this, 4, 3);
 
     //  Create our keyboard controls
     cursors = this.input.keyboard.createCursorKeys();
@@ -319,12 +414,12 @@ function update (time, delta)
         snake.faceDown();
     }
 
-    /*
     if (cursors.space.isDown)
     {
       snake.grow();
+      food.total++;
     }
-    */
+
 
     if (snake.update(time))
     {
@@ -333,6 +428,12 @@ function update (time, delta)
         if (snake.collideWithFood(food))
         {
             repositionFood();
+        }
+
+        if (snake.collideWithBlueportal(blueportal))
+        {
+            repositionBlueportal();
+            repositionOrangeportal();
         }
     }
 }
@@ -388,6 +489,108 @@ function repositionFood ()
 
         //  And place it
         food.setPosition(pos.x * 16, pos.y * 16);
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function repositionBlueportal ()
+{
+    //  First create an array that assumes all positions
+    //  are valid for the new piece of food
+
+    //  A Grid we'll use to reposition the food each time it's eaten
+    var testGrid = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        testGrid[y] = [];
+
+        for (var x = 0; x < 40; x++)
+        {
+            testGrid[y][x] = true;
+        }
+    }
+
+    snake.updateGrid(testGrid);
+
+    //  Purge out false positions
+    var validLocations = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        for (var x = 0; x < 40; x++)
+        {
+            if (testGrid[y][x] === true)
+            {
+                //  Is this position valid for food? If so, add it here ...
+                validLocations.push({ x: x, y: y });
+            }
+        }
+    }
+
+    if (validLocations.length > 0)
+    {
+        //  Use the RNG to pick a random food position
+        var pos = Phaser.Math.RND.pick(validLocations);
+
+        //  And place it
+        blueportal.setPosition(pos.x * 16, pos.y * 16);
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function repositionOrangeportal ()
+{
+    //  First create an array that assumes all positions
+    //  are valid for the new piece of food
+
+    //  A Grid we'll use to reposition the food each time it's eaten
+    var testGrid = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        testGrid[y] = [];
+
+        for (var x = 0; x < 40; x++)
+        {
+            testGrid[y][x] = true;
+        }
+    }
+
+    snake.updateGrid(testGrid);
+
+    //  Purge out false positions
+    var validLocations = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        for (var x = 0; x < 40; x++)
+        {
+            if (testGrid[y][x] === true)
+            {
+                //  Is this position valid for food? If so, add it here ...
+                validLocations.push({ x: x, y: y });
+            }
+        }
+    }
+
+    if (validLocations.length > 0)
+    {
+        //  Use the RNG to pick a random food position
+        var pos = Phaser.Math.RND.pick(validLocations);
+
+        //  And place it
+        orangeportal.setPosition(pos.x * 16, pos.y * 16);
 
         return true;
     }
