@@ -1,4 +1,4 @@
-let Level1 = new Phaser.Scene("Level1")
+var Level1 = new Phaser.Scene("Level1")
 
 var snake;
 var food;
