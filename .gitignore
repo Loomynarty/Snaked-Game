@@ -1,0 +1,4 @@
+
+*.log
+apache2/logs/access.log
+*.log
