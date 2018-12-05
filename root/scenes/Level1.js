@@ -1,16 +1,4 @@
-var Level1 = new Phaser.Scene("Level1")
-
-var snake;
-var food;
-var cursors;
-var gameOverText;
-
-//  Direction consts
-var UP = 0;
-var DOWN = 1;
-var LEFT = 2;
-var RIGHT = 3;
-
+var Level1 = new Phaser.Scene("L1")
 Level1.preload = function()
 {
     this.load.image('food', 'assets/food.png');
@@ -23,6 +11,7 @@ Level1.preload = function()
 
 Level1.create = function()
 {
+    console.log('this is level1')
     scoreText = this.add.text(200,200, 'temp').setFontSize(64)
     scoreText.visible = false    
 
@@ -118,5 +107,4 @@ function repositionFood ()
 function gameOver(){
     scoreText.setText('Score:'+ food.total)
     scoreText.visible = true
-    //return
 }
