@@ -7,14 +7,9 @@
 
     <script src="objects/snake.js"></script>
     <script src="objects/food.js"></script>
-    <!--
+    
     <script src="scenes/Level1.js"></script>
     <script src="scenes/Level2.js"></script>
-    -->
-    
-
-    <script src="scenes/Test.js"></script>
-    <script src="scenes/Test1.js"></script>
     <style>
         body {
             margin: 0;
@@ -32,6 +27,7 @@ var food;
 var cursors;
 var gameOverText;
 
+//Direction Constants
 var UP = 0;
 var DOWN = 1;
 var LEFT = 2;
@@ -43,10 +39,10 @@ var config = {
     height: 480,
     backgroundColor: 'A8DFE6',
     parent: 'snaked',
-    scene: [Test,Test2]
+    scene: [Level1, Level2]
 };
 
-var game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
 </script>
 
 </body>

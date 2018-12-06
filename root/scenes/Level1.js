@@ -27,7 +27,7 @@ Level1.update = function(time, delta)
 {
     if (!snake.alive)
     {
-        gameOver()
+        this.gameOver()
     }
     if (cursors.left.isDown)
     {
@@ -49,11 +49,11 @@ Level1.update = function(time, delta)
     {
         if (snake.collideWithFood(food))
         {
-            repositionFood();
+            this.repositionFood();
         }
     }
 }
-function repositionFood ()
+Level1.repositionFood = function()
 {
     //  First create an array that assumes all positions
     //  are valid for the new piece of food
@@ -104,7 +104,8 @@ function repositionFood ()
     }
 }
 
-function gameOver(){
+Level1.gameOver = function(){
     scoreText.setText('Score:'+ food.total)
     scoreText.visible = true
+    this.scene.start("L2")
 }
