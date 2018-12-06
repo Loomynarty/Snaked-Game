@@ -4,16 +4,12 @@
     <meta charset="UTF-8" />
     <title>Snaked</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
-<<<<<<< HEAD
-=======
-
     <script src="objects/snake.js"></script>
     <script src="objects/food.js"></script>
-    
+
     <script src="scenes/Level1.js"></script>
     <script src="scenes/Level2.js"></script>
     <script src="scenes/GameOver.js"></script>
->>>>>>> master
     <style>
         body {
             margin: 0;
@@ -23,8 +19,6 @@
 <body>
 
 <script>
-<<<<<<< HEAD
-=======
 //Variables for scenes
 var scoreText
 var snake;
@@ -37,14 +31,12 @@ var UP = 0;
 var DOWN = 1;
 var LEFT = 2;
 var RIGHT = 3;
->>>>>>> master
 
 var config = {
     type: Phaser.WEBGL,
     width: 640,
     height: 480,
     backgroundColor: 'A8DFE6',
-<<<<<<< HEAD
     parent: 'phaser-example',
     scene: {
         preload: preload,
@@ -635,13 +627,8 @@ function gameOver(){
     //return
 }
 
-=======
-    parent: 'snaked',
-    scene: [Level1, GameOver]
-};
-
 let game = new Phaser.Game(config);
->>>>>>> master
+
 </script>
 
 </body>
