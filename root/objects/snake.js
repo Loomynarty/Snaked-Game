@@ -102,7 +102,7 @@ var Snake = new Phaser.Class({
         this.direction = this.heading;
 
         //  Update the body segments and place the last coordinate into this.tail
-        if(snake.alive){
+        if(this.alive){
             Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1, this.tail);
         }
 
