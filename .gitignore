@@ -11,3 +11,8 @@ apache2/logs/access.log
 mysql/data/ib_logfile0
 *.ini
 *.MYI
+*.log
+apache2/logs/error.log
+apache2/logs/httpd.pid
+mysql/data/ib_logfile0
+mysql/data/ibdata1

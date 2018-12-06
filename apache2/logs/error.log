@@ -3,3 +3,9 @@
 [Wed Dec 05 18:36:49.725094 2018] [core:notice] [pid 12000:tid 824] AH00094: Command line: 'E:\\GitHub\\Snaked-Game/apache2/bin/httpd_usbwv8.exe -d E:/GitHub/Snaked-Game/apache2'
 [Wed Dec 05 18:36:49.730080 2018] [mpm_winnt:notice] [pid 12000:tid 824] AH00418: Parent: Created child process 1548
 [Wed Dec 05 18:36:50.262227 2018] [mpm_winnt:notice] [pid 1548:tid 956] AH00354: Child: Starting 64 worker threads.
+[Wed Dec 05 18:38:10.864176 2018] [core:warn] [pid 19192:tid 632] AH00098: pid file E:/GitHub/Snaked-Game/apache2/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Dec 05 18:38:10.883125 2018] [mpm_winnt:notice] [pid 19192:tid 632] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Wed Dec 05 18:38:10.883125 2018] [mpm_winnt:notice] [pid 19192:tid 632] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Wed Dec 05 18:38:10.883125 2018] [core:notice] [pid 19192:tid 632] AH00094: Command line: 'E:\\GitHub\\Snaked-Game/apache2/bin/httpd_usbwv8.exe -d E:/GitHub/Snaked-Game/apache2'
+[Wed Dec 05 18:38:10.887114 2018] [mpm_winnt:notice] [pid 19192:tid 632] AH00418: Parent: Created child process 18660
+[Wed Dec 05 18:38:11.354035 2018] [mpm_winnt:notice] [pid 18660:tid 952] AH00354: Child: Starting 64 worker threads.
