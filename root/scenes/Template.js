@@ -1,4 +1,9 @@
-let Template = new Phaser.Scene("temp")
+var Template = new Phaser.Scene("temp")
+
+Template.init = function(data)
+{
+    
+}
 
 Template.preload = function()
 {

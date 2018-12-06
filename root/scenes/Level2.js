@@ -1,5 +1,11 @@
-var Level1 = new Phaser.Scene("L1")
-Level1.preload = function()
+var Level2 = new Phaser.Scene('L2')
+
+var snake;
+var food;
+var cursors;
+var gameOverText;
+
+Level2.preload = function()
 {
     this.load.image('food', 'assets/food.png');
     this.load.image('body', 'assets/Snake.png');
@@ -9,21 +15,21 @@ Level1.preload = function()
     this.load.image('headW', 'assets/headW.png');
 }
 
-Level1.create = function()
+Level2.create = function()
 {
-    console.log('this is level1')
+    console.log('this is level2')
     scoreText = this.add.text(200,200, 'temp').setFontSize(64)
     scoreText.visible = false    
 
-    food = new Food(this, 3, 4);
+    food = new Food(this, 30, 20);
 
-    snake = new Snake(this, 8, 8);
+    snake = new Snake(this, 18, 18);
 
     //  Create our keyboard controls
     cursors = this.input.keyboard.createCursorKeys();
 }
 
-Level1.update = function(time, delta)
+Level2.update = function(time, delta)
 {
     if (!snake.alive)
     {
@@ -53,7 +59,7 @@ Level1.update = function(time, delta)
         }
     }
 }
-Level1.repositionFood = function()
+Level2.repositionFood = function()
 {
     //  First create an array that assumes all positions
     //  are valid for the new piece of food
@@ -104,10 +110,8 @@ Level1.repositionFood = function()
     }
 }
 
-Level1.gameOver = function(){
-    /*
+Level2.gameOver = function(){
     scoreText.setText('Score:'+ food.total)
     scoreText.visible = true
-    */
-    this.scene.start("over", {score: food.total})
+    this.scene.start('L1')
 }
