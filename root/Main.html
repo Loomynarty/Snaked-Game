@@ -33,6 +33,10 @@ var blueportal;
 var orangeportal;
 var cursors;
 var gameOverText;
+var bx;
+var by;
+var ox;
+var oy;
 
 //  Direction consts
 var UP = 0;
@@ -251,37 +255,42 @@ function create ()
                     {
                         case LEFT:
                         console.log(this.headPosition.x)
-                        console.log('Portal:' + blueportal.x)
-                            if(this.headPosition.x == Blueportal.x && this.headPosition.y == Blueportal.y)
+                        console.log('Portal:' + blueportal.x/16)
+                            if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
                             {
-                              this.headPosition.x = 32
-                              this.headPosition.y = 10
+                              this.headPosition.x = orangeportal.x/16
+                              this.headPosition.y = orangeportal.y/16
+
+                              portalrandomizer();
                             }
                             break;
 
                         case RIGHT:
-                        if(this.headPosition.x == 16 && this.headPosition.y == 16)
+                            if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
                             {
-                              this.headPosition.x = 32
-                              this.headPosition.y = 10
+                              this.headPosition.x = orangeportal.x/16
+                              this.headPosition.y = orangeportal.y/16
+                              portalrandomizer();
                             }
                             break;
 
                         case UP:
-                            if(this.headPosition.x == 16 && this.headPosition.y == 16)
-                            {
-                              this.headPosition.x = 32
-                              this.headPosition.y = 10
-                            }
-                            break;
+                        if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                        {
+                          this.headPosition.x = orangeportal.x/16
+                          this.headPosition.y = orangeportal.y/16
+                          portalrandomizer();
+                        }
+                        break;
 
                         case DOWN:
-                            if(this.headPosition.x == 16 && this.headPosition.y == 16)
-                            {
-                              this.headPosition.x = 32
-                              this.headPosition.y = 10
-                            }
-                            break;
+                        if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                        {
+                          this.headPosition.x = orangeportal.x/16
+                          this.headPosition.y = orangeportal.y/16
+                          portalrandomizer();
+                        }
+                        break;
                     }
 
             this.direction = this.heading;
@@ -342,18 +351,6 @@ function create ()
             }
         },
 
-        collideWithBlueportal: function (blueportal)
-        {
-            if (this.head.x === blueportal.x && this.head.y === blueportal.y)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        },
-
         updateGrid: function (grid)
         {
             //  Remove all body pieces from valid positions list
@@ -378,6 +375,8 @@ function create ()
     blueportal = new Blueportal(this, 4, 3);
 
     orangeportal = new Orangeportal(this, 4, 3);
+
+    portalrandomizer();
 
     //  Create our keyboard controls
     cursors = this.input.keyboard.createCursorKeys();
@@ -429,13 +428,13 @@ function update (time, delta)
         {
             repositionFood();
         }
-
-        if (snake.collideWithBlueportal(blueportal))
-        {
-            repositionBlueportal();
-            repositionOrangeportal();
-        }
     }
+}
+
+function portalrandomizer ()
+{
+  repositionBlueportal();
+  repositionOrangeportal();
 }
 
 /**
@@ -463,8 +462,10 @@ function repositionFood ()
         {
             testGrid[y][x] = true;
         }
-    }
 
+    }/*
+testGrid[blueportal.x][blueportal.y] = false
+testGrid[orangeportal.x][orangeportal.y] = false*/
     snake.updateGrid(testGrid);
 
     //  Purge out false positions
@@ -540,6 +541,8 @@ function repositionBlueportal ()
 
         //  And place it
         blueportal.setPosition(pos.x * 16, pos.y * 16);
+        this.bx = pos.x*16;
+        this.by = pos.y*16;
 
         return true;
     }
