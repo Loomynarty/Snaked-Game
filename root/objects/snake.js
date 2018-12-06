@@ -113,17 +113,13 @@ var Snake = new Phaser.Class({
 
         if (hitBody)
         {
-            console.log('dead');
-
             this.alive = false;
-
             return false;
         }
         else
         {
             //  Update the timer ready for the next movement
             this.moveTime = time + this.speed;
-
             return true;
         }
     },

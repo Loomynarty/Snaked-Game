@@ -105,7 +105,9 @@ Level1.repositionFood = function()
 }
 
 Level1.gameOver = function(){
+    /*
     scoreText.setText('Score:'+ food.total)
     scoreText.visible = true
-    this.scene.start("L2")
+    */
+    this.scene.start("over", {score: food.total})
 }

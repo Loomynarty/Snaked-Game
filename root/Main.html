@@ -10,6 +10,7 @@
     
     <script src="scenes/Level1.js"></script>
     <script src="scenes/Level2.js"></script>
+    <script src="scenes/GameOver.js"></script>
     <style>
         body {
             margin: 0;
@@ -39,7 +40,7 @@ var config = {
     height: 480,
     backgroundColor: 'A8DFE6',
     parent: 'snaked',
-    scene: [Level1, Level2]
+    scene: [Level1, GameOver]
 };
 
 let game = new Phaser.Game(config);
