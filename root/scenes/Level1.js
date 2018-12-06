@@ -11,43 +11,37 @@ Level1.preload = function()
 
 Level1.create = function()
 {
-    console.log('this is level1')
-    scoreText = this.add.text(200,200, 'temp').setFontSize(64)
-    scoreText.visible = false    
-
-    food = new Food(this, 3, 4);
-
-    snake = new Snake(this, 8, 8);
-
+    this.food = new Food(this, 3, 4);
+    this.snake = new Snake(this, 8, 8);
     //  Create our keyboard controls
-    cursors = this.input.keyboard.createCursorKeys();
+    this.cursors = this.input.keyboard.createCursorKeys();
 }
 
 Level1.update = function(time, delta)
 {
-    if (!snake.alive)
+    if (!this.snake.alive)
     {
         this.gameOver()
     }
-    if (cursors.left.isDown)
+    if (this.cursors.left.isDown)
     {
-        snake.faceLeft();
+        this.snake.faceLeft();
     }
-    else if (cursors.right.isDown)
+    else if (this.cursors.right.isDown)
     {
-        snake.faceRight();
+        this.snake.faceRight();
     }
-    else if (cursors.up.isDown)
+    else if (this.cursors.up.isDown)
     {
-        snake.faceUp();
+        this.snake.faceUp();
     }
-    else if (cursors.down.isDown)
+    else if (this.cursors.down.isDown)
     {
-        snake.faceDown();
+        this.snake.faceDown();
     }
-    if (snake.update(time))
+    if (this.snake.update(time))
     {
-        if (snake.collideWithFood(food))
+        if (this.snake.collideWithFood(this.food))
         {
             this.repositionFood();
         }
@@ -71,7 +65,7 @@ Level1.repositionFood = function()
         }
     }
 
-    snake.updateGrid(testGrid);
+    this.snake.updateGrid(testGrid);
 
     //  Purge out false positions
     var validLocations = [];
@@ -94,7 +88,7 @@ Level1.repositionFood = function()
         var pos = Phaser.Math.RND.pick(validLocations);
 
         //  And place it
-        food.setPosition(pos.x * 16, pos.y * 16);
+        this.food.setPosition(pos.x * 16, pos.y * 16);
 
         return true;
     }
@@ -105,9 +99,6 @@ Level1.repositionFood = function()
 }
 
 Level1.gameOver = function(){
-    /*
-    scoreText.setText('Score:'+ food.total)
-    scoreText.visible = true
-    */
-    this.scene.start("over", {score: food.total})
+
+    this.scene.start("over", {score: this.food.total})
 }
