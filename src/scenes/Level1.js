@@ -7,6 +7,7 @@ Level1.preload = function()
     this.load.image('headS', 'assets/headS.png');
     this.load.image('headN', 'assets/headN.png');
     this.load.image('headW', 'assets/headW.png');
+    this.load.audio('munch', 'assets/eat.wav');
 }
 
 Level1.create = function()
@@ -18,7 +19,7 @@ Level1.create = function()
 }
 
 Level1.update = function(time, delta)
-{
+{   
     if (!this.snake.alive)
     {
         this.gameOver()
@@ -43,6 +44,21 @@ Level1.update = function(time, delta)
     {
         if (this.snake.collideWithFood(this.food))
         {
+            
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
             this.repositionFood();
         }
     }

@@ -1,7 +1,7 @@
 var Snake = new Phaser.Class({
 
     initialize:
-
+    
     function Snake (scene, x, y)
     {
         this.headPosition = new Phaser.Geom.Point(x, y);
