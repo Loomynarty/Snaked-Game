@@ -17,7 +17,7 @@ GameOver.create = function(data)
         .on('pointerup', () => this.scene.start('L1'))
         .on('pointerover', () => this.replay.setStyle({fill: '#E8E83F'}))
         .on('pointerout', () => this.replay.setStyle({fill: '#FFFFFF'}))
-    var leaderText = this.add.text(300,90, '').setFontSize(20)
+    /*var leaderText = this.add.text(300,90, '').setFontSize(20)
     leaderText.setText([
       '1: 0',
       '2: 0',
@@ -29,7 +29,7 @@ GameOver.create = function(data)
       '8: 0',
       '9: 0',
       '10: 0',
-    ]) 
+    ]) */
 }
 
 GameOver.update = function(time, delta)
