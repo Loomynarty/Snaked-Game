@@ -10,6 +10,8 @@ Level1.preload = function()
     this.load.image('blueportal', 'assets/blueportal.png');
     this.load.image('orangeportal', 'assets/orangeportal.png')
     this.load.audio('munch', 'assets/eat.wav');
+    this.load.audio('song' , 'assets/song.mp3');
+    this.load.audio('death' , 'assets/death.mp3');
 }
 
 Level1.create = function()
@@ -19,6 +21,7 @@ Level1.create = function()
     this.blueportal = new Blueportal(this, 4, 3);
     this.orangeportal = new Orangeportal(this, 4, 5);
     this.portalrandomizer();
+    this.sound.play('song');
     //  Create our keyboard controls
     this.cursors = this.input.keyboard.createCursorKeys();
 }
@@ -235,6 +238,6 @@ Level1.repositionOrangeportal = function ()
     }
 }
 Level1.gameOver = function(){
-
+    this.sound.play('death');
     this.scene.start("over", {score: this.food.total})
 }
