@@ -4,7 +4,6 @@ var Snake = new Phaser.Class({
 
     function Snake (scene, x, y)
     {
-        this.scene = scene
         this.headPosition = new Phaser.Geom.Point(x, y);
 
         this.body = scene.add.group();
