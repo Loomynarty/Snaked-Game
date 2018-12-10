@@ -7,12 +7,16 @@ Level1.preload = function()
     this.load.image('headS', 'assets/headS.png');
     this.load.image('headN', 'assets/headN.png');
     this.load.image('headW', 'assets/headW.png');
+    this.load.image('blueportal', 'assets/blueportal.png');
+    this.load.image('orangeportal', 'assets/orangeportal.png')
 }
 
 Level1.create = function()
 {
     this.food = new Food(this, 3, 4);
     this.snake = new Snake(this, 8, 8);
+    this.blueportal = new Blueportal(this, 4, 3);
+    this.orangeportal = new Orangeportal(this, 4, 5);
     //  Create our keyboard controls
     this.cursors = this.input.keyboard.createCursorKeys();
 }
@@ -39,6 +43,11 @@ Level1.update = function(time, delta)
     {
         this.snake.faceDown();
     }
+    if (this.cursors.space.isDown)
+    {
+      snake.grow();
+      food.total++;
+    }
     if (this.snake.update(time))
     {
         if (this.snake.collideWithFood(this.food))
@@ -47,6 +56,13 @@ Level1.update = function(time, delta)
         }
     }
 }
+
+/*function portalrandomizer ()
+{
+  repositionBlueportal();
+  repositionOrangeportal();
+}*/
+
 Level1.repositionFood = function()
 {
     //  First create an array that assumes all positions
@@ -64,7 +80,8 @@ Level1.repositionFood = function()
             testGrid[y][x] = true;
         }
     }
-
+    /*testGrid[blueportal.x][blueportal.y] = false
+    testGrid[orangeportal.x][orangeportal.y] = false*/
     this.snake.updateGrid(testGrid);
 
     //  Purge out false positions
@@ -97,7 +114,109 @@ Level1.repositionFood = function()
         return false;
     }
 }
+/*function repositionBlueportal ()
+{
+    //  First create an array that assumes all positions
+    //  are valid for the new piece of food
 
+    //  A Grid we'll use to reposition the food each time it's eaten
+    var testGrid = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        testGrid[y] = [];
+
+        for (var x = 0; x < 40; x++)
+        {
+            testGrid[y][x] = true;
+        }
+    }
+
+    snake.updateGrid(testGrid);
+
+    //  Purge out false positions
+    var validLocations = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        for (var x = 0; x < 40; x++)
+        {
+            if (testGrid[y][x] === true)
+            {
+                //  Is this position valid for food? If so, add it here ...
+                validLocations.push({ x: x, y: y });
+            }
+        }
+    }
+
+    if (validLocations.length > 0)
+    {
+        //  Use the RNG to pick a random food position
+        var pos = Phaser.Math.RND.pick(validLocations);
+
+        //  And place it
+        blueportal.setPosition(pos.x * 16, pos.y * 16);
+        this.bx = pos.x*16;
+        this.by = pos.y*16;
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function repositionOrangeportal ()
+{
+    //  First create an array that assumes all positions
+    //  are valid for the new piece of food
+
+    //  A Grid we'll use to reposition the food each time it's eaten
+    var testGrid = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        testGrid[y] = [];
+
+        for (var x = 0; x < 40; x++)
+        {
+            testGrid[y][x] = true;
+        }
+    }
+
+    snake.updateGrid(testGrid);
+
+    //  Purge out false positions
+    var validLocations = [];
+
+    for (var y = 0; y < 30; y++)
+    {
+        for (var x = 0; x < 40; x++)
+        {
+            if (testGrid[y][x] === true)
+            {
+                //  Is this position valid for food? If so, add it here ...
+                validLocations.push({ x: x, y: y });
+            }
+        }
+    }
+
+    if (validLocations.length > 0)
+    {
+        //  Use the RNG to pick a random food position
+        var pos = Phaser.Math.RND.pick(validLocations);
+
+        //  And place it
+        orangeportal.setPosition(pos.x * 16, pos.y * 16);
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}*/
 Level1.gameOver = function(){
 
     this.scene.start("over", {score: this.food.total})

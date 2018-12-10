@@ -35,9 +35,9 @@ var Snake = new Phaser.Class({
     {
         if (this.direction === UP || this.direction === DOWN)
         {
-            
+
             this.heading = LEFT;
-            
+
             this.head.setTexture('headW');
         }
     },
@@ -46,11 +46,11 @@ var Snake = new Phaser.Class({
     {
         if (this.direction === UP || this.direction === DOWN)
         {
-            
+
             this.heading = RIGHT;
-           
+
             this.head.setTexture('head');
-            
+
         }
     },
 
@@ -58,7 +58,7 @@ var Snake = new Phaser.Class({
     {
         if (this.direction === LEFT || this.direction === RIGHT)
         {
-            
+
             this.heading = UP;
             this.head.setTexture('headN');
         }
@@ -68,7 +68,7 @@ var Snake = new Phaser.Class({
     {
         if (this.direction === LEFT || this.direction === RIGHT)
         {
-            
+
             this.heading = DOWN;
             this.head.setTexture('headS');
         }
@@ -98,6 +98,47 @@ var Snake = new Phaser.Class({
                     else this.headPosition.y += 1
                     break;
             }
+            /*switch (this.heading)
+                {
+                    case LEFT:
+                    console.log(this.headPosition.x)
+                    console.log('Portal:' + blueportal.x/16)
+                        if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                        {
+                          this.headPosition.x = orangeportal.x/16
+                          this.headPosition.y = orangeportal.y/16
+
+                          portalrandomizer();
+                        }
+                        break;
+
+                    case RIGHT:
+                        if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                        {
+                          this.headPosition.x = orangeportal.x/16
+                          this.headPosition.y = orangeportal.y/16
+                          portalrandomizer();
+                        }
+                        break;
+
+                    case UP:
+                    if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                    {
+                      this.headPosition.x = orangeportal.x/16
+                      this.headPosition.y = orangeportal.y/16
+                      portalrandomizer();
+                    }
+                    break;
+
+                    case DOWN:
+                    if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                    {
+                      this.headPosition.x = orangeportal.x/16
+                      this.headPosition.y = orangeportal.y/16
+                      portalrandomizer();
+                    }
+                    break;
+                }*/
 
         this.direction = this.heading;
 
