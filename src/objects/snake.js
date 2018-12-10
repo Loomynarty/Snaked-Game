@@ -4,6 +4,7 @@ var Snake = new Phaser.Class({
 
     function Snake (scene, x, y)
     {
+        this.scene = scene
         this.headPosition = new Phaser.Geom.Point(x, y);
 
         this.body = scene.add.group();
@@ -98,47 +99,45 @@ var Snake = new Phaser.Class({
                     else this.headPosition.y += 1
                     break;
             }
-            /*switch (this.heading)
+            switch (this.heading)
                 {
                     case LEFT:
-                    console.log(this.headPosition.x)
-                    console.log('Portal:' + blueportal.x/16)
-                        if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                        if(this.headPosition.x == Level1.blueportal.x/16 && this.headPosition.y == Level1.blueportal.y/16)
                         {
-                          this.headPosition.x = orangeportal.x/16
-                          this.headPosition.y = orangeportal.y/16
+                          this.headPosition.x = Level1.orangeportal.x/16
+                          this.headPosition.y = Level1.orangeportal.y/16
 
-                          portalrandomizer();
+                          Level1.portalrandomizer();
                         }
                         break;
 
                     case RIGHT:
-                        if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                        if(this.headPosition.x == Level1.blueportal.x/16 && this.headPosition.y == Level1.blueportal.y/16)
                         {
-                          this.headPosition.x = orangeportal.x/16
-                          this.headPosition.y = orangeportal.y/16
-                          portalrandomizer();
+                          this.headPosition.x = Level1.orangeportal.x/16
+                          this.headPosition.y = Level1.orangeportal.y/16
+                          Level1.portalrandomizer();
                         }
                         break;
 
                     case UP:
-                    if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                    if(this.headPosition.x == Level1.blueportal.x/16 && this.headPosition.y == Level1.blueportal.y/16)
                     {
-                      this.headPosition.x = orangeportal.x/16
-                      this.headPosition.y = orangeportal.y/16
-                      portalrandomizer();
+                      this.headPosition.x = Level1.orangeportal.x/16
+                      this.headPosition.y = Level1.orangeportal.y/16
+                      Level1.portalrandomizer();
                     }
                     break;
 
                     case DOWN:
-                    if(this.headPosition.x == blueportal.x/16 && this.headPosition.y == blueportal.y/16)
+                    if(this.headPosition.x == Level1.blueportal.x/16 && this.headPosition.y == Level1.blueportal.y/16)
                     {
-                      this.headPosition.x = orangeportal.x/16
-                      this.headPosition.y = orangeportal.y/16
-                      portalrandomizer();
+                      this.headPosition.x = Level1.orangeportal.x/16
+                      this.headPosition.y = Level1.orangeportal.y/16
+                      Level1.portalrandomizer();
                     }
                     break;
-                }*/
+                }
 
         this.direction = this.heading;
 

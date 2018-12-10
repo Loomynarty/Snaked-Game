@@ -9,6 +9,7 @@ Level1.preload = function()
     this.load.image('headW', 'assets/headW.png');
     this.load.image('blueportal', 'assets/blueportal.png');
     this.load.image('orangeportal', 'assets/orangeportal.png')
+    this.load.audio('munch', 'assets/eat.wav');
 }
 
 Level1.create = function()
@@ -17,6 +18,7 @@ Level1.create = function()
     this.snake = new Snake(this, 8, 8);
     this.blueportal = new Blueportal(this, 4, 3);
     this.orangeportal = new Orangeportal(this, 4, 5);
+    this.portalrandomizer();
     //  Create our keyboard controls
     this.cursors = this.input.keyboard.createCursorKeys();
 }
@@ -45,23 +47,38 @@ Level1.update = function(time, delta)
     }
     if (this.cursors.space.isDown)
     {
-      snake.grow();
-      food.total++;
+      this.snake.grow();
+      this.food.total++;
     }
     if (this.snake.update(time))
     {
         if (this.snake.collideWithFood(this.food))
         {
+
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
+            this.sound.play('munch');
             this.repositionFood();
         }
     }
 }
 
-/*function portalrandomizer ()
+Level1.portalrandomizer = function()
 {
-  repositionBlueportal();
-  repositionOrangeportal();
-}*/
+  this.repositionBlueportal();
+  this.repositionOrangeportal();
+}
 
 Level1.repositionFood = function()
 {
@@ -114,7 +131,7 @@ Level1.repositionFood = function()
         return false;
     }
 }
-/*function repositionBlueportal ()
+Level1.repositionBlueportal = function ()
 {
     //  First create an array that assumes all positions
     //  are valid for the new piece of food
@@ -132,7 +149,7 @@ Level1.repositionFood = function()
         }
     }
 
-    snake.updateGrid(testGrid);
+    this.snake.updateGrid(testGrid);
 
     //  Purge out false positions
     var validLocations = [];
@@ -155,7 +172,7 @@ Level1.repositionFood = function()
         var pos = Phaser.Math.RND.pick(validLocations);
 
         //  And place it
-        blueportal.setPosition(pos.x * 16, pos.y * 16);
+        this.blueportal.setPosition(pos.x * 16, pos.y * 16);
         this.bx = pos.x*16;
         this.by = pos.y*16;
 
@@ -167,7 +184,7 @@ Level1.repositionFood = function()
     }
 }
 
-function repositionOrangeportal ()
+Level1.repositionOrangeportal = function ()
 {
     //  First create an array that assumes all positions
     //  are valid for the new piece of food
@@ -185,7 +202,7 @@ function repositionOrangeportal ()
         }
     }
 
-    snake.updateGrid(testGrid);
+    this.snake.updateGrid(testGrid);
 
     //  Purge out false positions
     var validLocations = [];
@@ -208,7 +225,7 @@ function repositionOrangeportal ()
         var pos = Phaser.Math.RND.pick(validLocations);
 
         //  And place it
-        orangeportal.setPosition(pos.x * 16, pos.y * 16);
+        this.orangeportal.setPosition(pos.x * 16, pos.y * 16);
 
         return true;
     }
@@ -216,7 +233,7 @@ function repositionOrangeportal ()
     {
         return false;
     }
-}*/
+}
 Level1.gameOver = function(){
 
     this.scene.start("over", {score: this.food.total})
