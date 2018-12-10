@@ -237,7 +237,8 @@ Level1.repositionOrangeportal = function ()
         return false;
     }
 }
-Level1.gameOver = function(){
+Level1.gameOver = function()
+{
     this.sound.play('death');
     this.scene.start("over", {score: this.food.total})
 }

@@ -11,6 +11,8 @@ GameOver.preload = function()
 
 GameOver.create = function(data)
 {
+
+
     this.scoreText = this.add.text(250,10, 'Your Score: ' + this.score).setFontSize(20)
     this.replay = this.add.text(250, 300, 'Play Again').setFontSize(30)
         .setInteractive()
@@ -30,6 +32,7 @@ GameOver.create = function(data)
       '9: 0',
       '10: 0',
     ]) */
+      this.sound.destroy();
 }
 
 GameOver.update = function(time, delta)
