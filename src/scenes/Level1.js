@@ -57,20 +57,6 @@ Level1.update = function(time, delta)
     {
         if (this.snake.collideWithFood(this.food))
         {
-
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
-            this.sound.play('munch');
             this.sound.play('munch');
             this.repositionFood();
         }
@@ -241,4 +227,5 @@ Level1.gameOver = function()
 {
     this.sound.play('death');
     this.scene.start("over", {score: this.food.total})
+
 }
