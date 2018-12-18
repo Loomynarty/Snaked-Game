@@ -13,7 +13,7 @@ var Snake = new Phaser.Class({
 
         this.alive = true;
 
-        this.speed = 100;
+        this.speed = 70;
 
         this.moveTime = 0;
 
@@ -157,6 +157,7 @@ var Snake = new Phaser.Class({
         }
         else
         {
+            console.log(this.speed)
             //  Update the timer ready for the next movement
             this.moveTime = time + this.speed;
             return true;
@@ -179,9 +180,9 @@ var Snake = new Phaser.Class({
             food.eat();
 
             //  For every 5 items of food eaten we'll increase the snake speed a little
-            if (this.speed > 20 && food.total % 5 === 0)
+            if (this.speed > 30)
             {
-                this.speed -= 5;
+                this.speed -= 1;
             }
 
             return true;

@@ -16,8 +16,7 @@ Level1.preload = function()
 
 Level1.create = function()
 {
-    console.log('a')
-    this.sound.play('song', {volume: 0.1});
+    this.sound.play('song', {volume: 0.05});
     this.food = new Food(this, 3, 4);
     this.snake = new Snake(this, 8, 8);
     this.blueportal = new Blueportal(this, 4, 3);
